@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3×3 Color Grid (Internal CSS)</title>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f3f3f3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    
+    .grid {
+      width: 750px;              
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    
+    .box {
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    
+    .b1 { background: #2ebde8; }  
+    .b2 { background: #da4430; } 
+    .b3 { background: #2c90ee; }  
+    .b4 { background: #eaca29; }  
+    .b5 { background: #7146ce; }  
+    .b6 { background: #49c436; }  
+    .b7 { background: #ea6e3c; }  
+    .b8 { background: #39b8a7; }  
+    .b9 { background: #5a0909; }  
+
+
+  
+
+    @media (max-width: 800px) {
+      .grid { width: 100%; gap: 5.5px; }
+      .box { height: 130px; font-size: 24px; }
+      
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid">
+    <div class="box b2">2.</div>
+    <div class="box b3">3.</div>
+    <div class="box b4">4.</div>
+
+    <div class="box b5">5.</div>
+    <div class="box b6">6.</div>
+    <div class="box b1">1.</div>
+
+    <div class="box b7">7.</div>
+    <div class="box b8">8.</div>
+    <div class="box b9">9.</div>
+  </div>
+
+</body>
+</html>

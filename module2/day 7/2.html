@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Highest & Average CTC Card</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root{
+      --bg: #d9c7f0;            
+      --accent: #4b2c78;        
+      --muted: #7a7480;        
+      --radius-outer: 26px;
+      --radius-card: 10px;
+      --shadow: 0 6px 14px rgba(27,20,49,0.12);
+      --container-w: 360px;     
+    }
+
+    body{
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: #fff;
+    }
+
+    .outer {
+      width: var(--container-w);
+      background: var(--bg);
+      border-radius: var(--radius-outer);
+      padding: 38px 28px 28px;
+      box-shadow: 0 14px 40px rgba(79,56,130,0.06);
+      max-height: 92vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .title {
+      text-align: center;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 28px;
+      line-height: 1;
+      margin-bottom: 26px;
+      font-style: italic; 
+    }
+    .title span { display:block; } 
+
+    .stack {
+      width: 100%;
+      display: grid;
+      gap: 22px;
+      justify-items: center;
+    }
+
+    .card {
+      width: 88%;
+      background: var(--card-bg);
+      border-radius: var(--radius-card);
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: white;
+    }
+
+    .card .label {
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .card .value {
+      font-weight: 750;
+      font-size: 35px;
+      line-height: 1;
+      color: #000;
+      letter-spacing: -0.02em;
+    }
+
+    
+    .value.lpa {
+      font-size: 35px;
+    }
+
+    
+    .bottom-spacer {
+      height: 12px;
+      width: 100%;
+    }
+
+  
+    @media (max-width: 380px) {
+      :root{ --container-w: calc(100% - 32px); }
+      .card { padding: 18px 14px; }
+      .title { font-size: 24px; }
+      .card .value { font-size: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="outer" role="region" aria-label="Highest & Average CTC card">
+    <div class="title">
+      <span>Highest &</span>
+      <span>Average CTC</span>
+    </div>
+
+    <div class="stack">
+      
+      <div class="card">
+        <div class="label">Expected Increase in<br>Salary Potential</div>
+        <div class="value">60%</div>
+      </div>
+
+      
+      <div class="card">
+        <div class="label">Average CTC</div>
+        <div class="value lpa">₹6.1 LPA</div>
+      </div>
+
+     
+      <div class="card">
+        <div class="label">Highest CTC</div>
+        <div class="value lpa">₹36 LPA</div>
+      </div>
+
+      
+      <div class="card" style="opacity:0.98; transform: translateY(6px);">
+        <div class="label">Placement Highlights</div>
+        <div class="value" style="font-size:28px; font-weight:700;">See more →</div>
+      </div>
+
+      <div class="bottom-spacer"></div>
+    </div>
+  </div>
+
+</body>
+</html>

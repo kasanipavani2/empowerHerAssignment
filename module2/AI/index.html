@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Replica</title>
+  <link rel="stylesheets" href="style.css">
+  
+</head>
+<body>
+  <header>
+    <h2>MyPortfolio</h2>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="home">
+    <div>
+      <h1>Hello, I'm Pavani</h1>
+      <p>Aspiring Frontend Developer learning HTML, CSS, JavaScript step by step with practice.</p>
+      <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-box">HTML</div>
+      <div class="skill-box">CSS</div>
+      <div class="skill-box">JavaScript</div>
+      <div class="skill-box">React</div>
+      <div class="skill-box">Python</div>
+      <div class="skill-box">Git & GitHub</div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: pavani@example.com</p>
+    <p>LinkedIn: linkedin.com/in/pavani</p>
+  </section>
+
+  <footer>
+    © 2025 Pavani | All Rights Reserved
+  </footer>
+</body>
+</html>

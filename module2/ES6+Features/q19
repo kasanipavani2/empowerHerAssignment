@@ -1,1 +1,168 @@
+1. Template Literals + Expressions
+a) "5 + 7 = 12"
+console.log(`5 + 7 = ${5 + 7}`);
 
+b) Multi-line string
+const multiLine = `
+Line 1
+Line 2
+Line 3
+`;
+
+c) Full name
+const firstName = "John";
+const lastName = "Doe";
+console.log(`${firstName} ${lastName}`);
+
+2. Arrow Functions & this
+a) Convert to arrow
+const square = n => n * n;
+
+b) Why logs undefined?
+const obj = {
+  value: 50,
+  test: () => console.log(this.value)
+};
+obj.test();
+
+
+✔ Arrow functions do not have their own this.
+They take this from the outer/global scope → which does not have value.
+So it prints undefined.
+
+c) Correct version
+const obj = {
+  value: 50,
+  test() {
+    console.log(this.value);
+  }
+};
+obj.test();
+
+3. Rest, Spread & Copying Objects
+a) Shallow copy
+const productCopy = { ...product };
+
+b) Merge objects
+const merged = { ...a, ...b };
+
+c) maxValue(...nums)
+const maxValue = (...nums) => Math.max(...nums);
+
+4. Destructuring & Optional Chaining
+a) Extract a and b
+const [a, b] = arr;
+
+b) Extract brand
+const { brand } = laptop;
+
+c) Safe access
+console.log(info?.user?.name);
+
+
+✔ Output: undefined
+
+5. Scoping (let/var/const)
+a) var
+for (var i = 0; i < 3; i++) {}
+console.log(i); // 3
+
+
+var is NOT block scoped.
+
+b) let
+for (let j = 0; j < 3; j++) {}
+console.log(j); // ReferenceError
+
+
+let is block scoped.
+
+c) Why const?
+
+Because const prevents reassignment, helping avoid accidental changes to values that should remain fixed.
+
+6. Ternary Operator – Practice
+a) Convert to ternary
+speed = kmph > 60 ? "Fast" : "Normal";
+
+b) Adult or Minor
+const status = age >= 18 ? "Adult" : "Minor";
+
+c) Positive / Zero / Negative
+const result = n > 0 
+  ? "Positive" 
+  : n === 0 
+    ? "Zero" 
+    : "Negative";
+
+7. Spread, Rest & Arrays
+a) Add 4 and 5
+const numsUpdated = [...nums, 4, 5];
+
+b) Combine arrays
+const combined = [...a, ...b];
+
+c) printNames(...names)
+const printNames = (...names) => names;
+
+8. Object Destructuring & Shorthand
+a) Destructure
+const { id, status } = user;
+
+b) Convert to shorthand
+const id = 101;
+const role = "admin";
+
+const userObj = { id, role };
+
+c) Object + method shorthand
+const person = {
+  name: "Sam",
+  greet() {
+    console.log("Hello");
+  }
+};
+
+9. Template Literals (More Practice)
+a) Today's date
+console.log(`Today is: ${new Date().toDateString()}`);
+
+b) Score message
+const message = `Hello ${NAME}, your score is ${SCORE}/100`;
+
+10. Arrow Function Shorthands
+a) One-line addition
+const add = (a, b) => a + b;
+
+b) isAdult
+const isAdult = age => age >= 18;
+
+c) double
+const double = n => n * 2;
+
+11. Spread Operator (Arrays & Objects)
+a) Clone array
+const copy = [...arr];
+
+b) Add 100 to beginning
+const updated = [100, ...arr];
+
+c) Merge + override
+const mergedObj = { ...obj1, ...obj2, prop: "newValue" };
+
+12. Optional Chaining (More Practice)
+a) Access city
+console.log(user?.address?.city);
+
+b) Access job.title safely
+console.log(user?.job?.title);
+
+
+ //Output: prints undefined
+
+c) Example preventing crash
+const emp = { name: "Paul" };
+
+console.log(emp.address?.street);  
+// without ?. → TypeError
+// with ?. → undefined

@@ -1,1 +1,66 @@
+//if (true) {
+  
+//  const profile = {
+//  user: {
+//    details: {
+//      email: "test@mail.com"
+//    }
+//  }
+//};
+
+//  let x = 10;
+//  var y = 20;
+//}
+//console.log(y);
+//console.log(x);
+
+
+const profile = {
+  user: {
+    details: {
+      email: "test@mail.com"
+    }
+  }
+};
+console.log(profile?.user?.details?.email);  
+console.log(profile?.user?.details?.phone);  
+
+const student = {
+  name: "Sam"
+};
+
+console.log(student.address?.city);  
+
+
+
+
+
+// Output:
+test@mail.com
+undefined
+undefined
+
+
+
+//Reason :
+20
+
+/index.js:15
+console.log(x);
+            ^
+
+ReferenceError: x is not defined
+    at Object.<anonymous> (/index.js:15:13)
+    at Module._compile (node:internal/modules/cjs/loader:1469:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1548:10)
+    at Module.load (node:internal/modules/cjs/loader:1288:32)
+    at Module._load (node:internal/modules/cjs/loader:1104:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:174:12)
+    at node:internal/main/run_main_module:28:49
+
+Node.js v20.18.0
+
+We are getting the reference error since x is declared as let.Let is a block scoped.
+
+
 

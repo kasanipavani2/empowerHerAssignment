@@ -1,1 +1,20 @@
+const isEven = (n) => n % 2 === 0;
+console.log(isEven(4)); 
+console.log(isEven(7)); 
+
+marks=40
+
+const result = marks >= 35 ? "Pass" : "Fail";
+const greet = (name) => `Hello, ${name ? name : "Guest"}`;
+console.log(greet("Pavani")); 
+console.log(greet());         
+
+
+
+//Output:
+true
+false
+Hello, Pavani
+Hello, Guest
+
 

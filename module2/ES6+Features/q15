@@ -1,1 +1,31 @@
+//Templzte Literals
 
+
+const username = "Pavani";
+const course = "JavaScript";
+
+console.log(`Hello ${username}, welcome to the ${course} course!`);
+
+
+// Shorthand
+const name = "Sam";
+const age = 21;
+
+const student = {
+  name,
+  age,
+  greet() {
+    console.log("Hello");
+  }
+};
+
+
+// Arrow Function
+const getFullName = (first, last) => `${first} ${last}`;
+console.log(getFullName("Sam", "Wilson"));
+
+
+
+//Output:
+Hello Pavani, welcome to the JavaScript course!
+Sam Wilson

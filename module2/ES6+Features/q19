@@ -26,7 +26,7 @@ const obj = {
 obj.test();
 
 
-✔ Arrow functions do not have their own this.
+//Reason: Arrow functions do not have their own this.
 They take this from the outer/global scope → which does not have value.
 So it prints undefined.
 
@@ -60,7 +60,7 @@ c) Safe access
 console.log(info?.user?.name);
 
 
-✔ Output: undefined
+//Output: undefined
 
 5. Scoping (let/var/const)
 a) var
@@ -68,18 +68,18 @@ for (var i = 0; i < 3; i++) {}
 console.log(i); // 3
 
 
-var is NOT block scoped.
+//Reason: var is NOT block scoped.
 
 b) let
 for (let j = 0; j < 3; j++) {}
 console.log(j); // ReferenceError
 
 
-let is block scoped.
+//Reason: let is block scoped.
 
 c) Why const?
 
-Because const prevents reassignment, helping avoid accidental changes to values that should remain fixed.
+//Reason: Because const prevents reassignment, helping avoid accidental changes to values that should remain fixed.
 
 6. Ternary Operator – Practice
 a) Convert to ternary
@@ -164,5 +164,7 @@ c) Example preventing crash
 const emp = { name: "Paul" };
 
 console.log(emp.address?.street);  
+
+//Output:
 // without ?. → TypeError
 // with ?. → undefined

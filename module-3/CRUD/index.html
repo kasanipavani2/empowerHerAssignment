@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Management (Firebase)</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+    background: #f1f5f9;
+    color: #111827;
+    }
+
+    .app {
+    display: flex;
+    height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+    width: 280px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    padding: 20px;
+    overflow-y: auto;
+    }
+
+    .brand {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    }
+
+    label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 10px;
+    display: block;
+    }
+
+    input {
+    width: 100%;
+    margin-top: 6px;
+    padding: 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    }
+
+    button {
+    width: 100%;
+    background: #0066ff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    margin-top: 16px;
+    font-weight: 600;
+    transition: 0.3s;
+    }
+
+    button:hover {
+    background: #004cbe;
+    }
+
+    button.secondary {
+    background: #ef4444;
+    }
+
+    button.secondary:hover {
+    background: #c81e1e;
+    }
+
+    .seed {
+    background: #475569;
+    }
+
+    .seed:hover {
+    background: #1e293b;
+    }
+
+    /* Main area */
+    main {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    }
+
+    .controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    }
+
+    /* Books grid */
+    .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    }
+
+    .card {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    }
+
+    .cover {
+    width: 100%;
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    }
+
+    .title {
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 16px;
+    }
+
+    .meta {
+    font-size: 13px;
+    color: #475569;
+    margin: 8px 0;
+    }
+
+    .actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    }
+
+    
+    .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    }
+
+    .modal.show {
+    display: flex;
+    }
+
+    .modal-card {
+    background: #ffffff;
+    padding: 20px;
+    width: 350px;
+    border-radius: 10px;
+    }
+
+    
+    @media (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    }
+
+    @media (max-width: 600px) {
+    .app {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    }
+
+</style>
+</head>
+<body>
+<div class="app">
+    <aside class="sidebar">
+        <div class="brand">Book Management (Firebase)</div>
+        <p style="margin-top:0;margin-bottom:12px;font-size:13px;color:#475569">
+        Add a new book using the form below.
+        </p>
+
+        <form id="addForm">
+        <label>Title</label>
+        <input id="title" type="text" required />
+        <label>Author</label>
+        <input id="author" type="text" required />
+        <label>Price (number)</label>
+        <input id="price" type="number" step="0.01" required />
+        <label>Image URL</label>
+        <input id="image" type="text" required />
+        <button type="submit">Add Book</button>
+        </form>
+
+      <button id="seedBtn" class="seed" style="margin-top:12px">Seed dummy books (if none)</button>
+      <p style="font-size:12px;color:#64748b;margin-top:12px">
+        
+      </p>
+    </aside>
+
+    <main>
+      <div class="controls">
+        <h2 style="margin:0">Books</h2>
+        <div id="count" style="color:#475569">0 books</div>
+      </div>
+
+      <div id="grid" class="grid"></div>
+    </main>
+  </div>
+
+
+  <div id="modal" class="modal" role="dialog" aria-hidden="true">
+    <div class="modal-card">
+      <h3 id="mTitle"></h3>
+      <p id="mAuthor" style="margin-top:6px"></p>
+      <p id="mPrice" style="font-weight:600"></p>
+      <div style="margin-top:10px">
+        <img id="mCover" src="" alt="cover" style="max-width:100%;border-radius:8px"/>
+      </div>
+      <div style="text-align:right;margin-top:10px">
+        <button id="closeModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="module" src="index.js"></script>
+</body>
+</html>

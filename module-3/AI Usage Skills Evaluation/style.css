@@ -1,0 +1,8 @@
+body { margin:0; font-family: Arial, sans-serif; background:#f0f4ff; }
+.container { max-width: 450px; margin: 2rem auto; padding:1.5rem; background:white; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.1);}
+.navbar { display:flex; justify-content:space-between; padding:1rem; background:#4a68e8; color:white;}
+.navbar h2, .navbar a { margin:0; color:white; text-decoration:none;}
+input, select, button { width:100%; padding:0.6rem; margin:0.5rem 0; border-radius:6px; border:1px solid #aaa;}
+button.primary-btn { background:#4a68e8; color:white; border:none; cursor:pointer;}
+button.primary-btn:hover { background:#3b58cd;}
+.hidden { display:none;}

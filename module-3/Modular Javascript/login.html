@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+</head>
+<body>
+
+  <div id="navbar"></div>
+
+  <h2>Login</h2>
+
+  <form id="loginForm">
+    <input type="email" id="email" placeholder="Enter email" required><br><br>
+    <input type="password" id="password" placeholder="Password" required><br><br>
+    <button type="submit">Login</button>
+  </form>
+
+  <div id="footer"></div>
+
+  <script type="module">
+    import { Navbar } from "./components/navbar.js";
+    import { Footer } from "./components/footer.js";
+    import "./scripts/login.js";
+
+    document.getElementById("navbar").innerHTML = Navbar();
+    document.getElementById("footer").innerHTML = Footer();
+  </script>
+
+</body>
+</html>
